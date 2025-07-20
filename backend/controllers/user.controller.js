@@ -152,6 +152,23 @@ export async function loginController(req, res) {
   }
 }
 
+// get User details Controller
+export async function userDetailsController(req, res) {
+  try {
+    const userId = req.userId;
+    const user = await UserModel.findById(userId);
+
+    return res.status(200).json({
+      message: "User details found",
+      data: user,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong !!",
+    });
+  }
+}
+
 // logout User Controller
 export async function logoutController(req, res) {
   try {
