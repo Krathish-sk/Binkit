@@ -11,6 +11,10 @@ const SummaryApi = {
     url: `${apiUser}login`,
     method: "post",
   },
+  userDetails: {
+    url: `${apiUser}user-details`,
+    method: "get",
+  },
   forgotPassword: {
     url: `${apiUser}forgot-password`,
     method: "put",
