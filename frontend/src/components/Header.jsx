@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { BsCart4 } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 import useMobile from "../hooks/useMobile";
 import Logo from "../assets/BinkitLogo.png";
@@ -12,6 +13,9 @@ export default function Header() {
   const { pathname } = useLocation();
   const isSearchPage = pathname === "/search";
   const navigate = useNavigate();
+  const user = useSelector((state) => state?.user);
+
+  console.log(user);
 
   const redirectToLoginPage = () => {
     navigate("/login");
