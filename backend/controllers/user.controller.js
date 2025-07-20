@@ -128,6 +128,11 @@ export async function loginController(req, res) {
     const accessToken = await generatedAccessToken(userExists._id);
     const refreshToken = await generatedRefreshToken(userExists._id);
 
+    //Update user login timestamp
+    const updateUser = await UserModel.findByIdAndUpdate(userExists?._id, {
+      last_login_date: new Date(),
+    });
+
     const cookiesOption = {
       httpOnly: true,
       secure: true,
