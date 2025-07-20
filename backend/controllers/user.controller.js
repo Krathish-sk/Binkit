@@ -327,6 +327,12 @@ export async function verifyForgotPasswordController(req, res) {
       });
     }
 
+    // Remove values for forgotpasswordotp and otpexpiry
+    const updateUser = await UserModel.findByIdAndUpdate(userFound?._id, {
+      forgot_password_expiry: null,
+      forgot_password_otp: null,
+    });
+
     // OTP is valid
     return res.status(200).json({
       message: "OTP verification succussfull",
