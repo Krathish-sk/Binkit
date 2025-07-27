@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 import axiosToastError from "../utils/axiosToastError";
 import Axios from "../utils/axios";
 import SummaryApi from "../common/summaryAPI";
+import fetchUserDetails from "../utils/fetchUserDetails";
+import { setUserDetails } from "../store/userSlice";
 
 export default function Login() {
   const initialData = {
     email: "",
     password: "",
   };
+  const dispatch = useDispatch();
 
   const [data, setData] = useState(initialData);
 
@@ -72,6 +76,9 @@ export default function Login() {
       if (resp?.status === 200) {
         localStorage.setItem("accessToken", resp.data.data.accessToken);
         localStorage.setItem("refreshToken", resp.data.data.refreshToken);
+        const userDetails = await fetchUserDetails();
+        console.log("userdetails", userDetails);
+        dispatch(setUserDetails(userDetails.data));
         toast.success(resp.data.message);
         setData(initialData);
         navigate("/");

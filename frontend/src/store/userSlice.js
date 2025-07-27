@@ -19,6 +19,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    // Set user details
     setUserDetails: (state, actions) => {
       state.name = actions.payload?.name;
       state._id = actions.payload?._id;
@@ -33,9 +34,10 @@ const userSlice = createSlice({
       state.orderHistory = actions.payload?.orderHistory;
       state.role = actions.payload?.role;
     },
+    logoutUser: () => initialState, // Reset to initial state.
   },
 });
 
-export const { setUserDetails } = userSlice.actions;
+export const { setUserDetails, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
