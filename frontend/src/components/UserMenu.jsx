@@ -43,15 +43,21 @@ export default function UserMenu({ close }) {
           {user?.name}
         </span>
         <Link to={"/dashboard/profile"} className="mr-2 hover:bg-orange-200">
-          <HiOutlineExternalLink size={15} />
+          <HiOutlineExternalLink size={15} onClick={close} />
         </Link>
       </div>
       <Divider />
       <div className="text-sm grid">
-        <Link to="" className="hover:bg-orange-300 rounded py-1">
+        <Link
+          to="/dashboard/myorders"
+          className="hover:bg-orange-300 rounded py-1"
+        >
           My Orders
         </Link>
-        <Link to="" className="hover:bg-orange-300 rounded py-1">
+        <Link
+          to="/dashboard/address"
+          className="hover:bg-orange-300 rounded py-1"
+        >
           Save address
         </Link>
         <button

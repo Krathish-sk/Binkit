@@ -1,4 +1,5 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
+
 import UserMenu from "../components/UserMenu";
 
 export default function Dashboard() {
@@ -10,7 +11,9 @@ export default function Dashboard() {
           <UserMenu />
         </div>
         {/* Right for content */}
-        <div className="bg-white p-4">content display</div>
+        <div className="bg-white p-4">
+          <Outlet />
+        </div>
       </div>
     </section>
   );
