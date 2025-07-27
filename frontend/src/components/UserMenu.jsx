@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineExternalLink } from "react-icons/hi";
 
 import Axios from "../utils/axios";
 import AxiosToastError from "../utils/axiosToastError";
@@ -37,8 +38,14 @@ export default function UserMenu({ close }) {
   return (
     <div className="">
       <div className="font-semibold">My Account</div>
-      <div className="text-sm">{user?.name}</div>
-      <div className="text-sm">{user?.email}</div>
+      <div className="text-sm flex items-center gap-2">
+        <span className="max-w-52 text-ellipsis line-clamp-1">
+          {user?.name}
+        </span>
+        <Link to={"/dashboard/profile"} className="mr-2 hover:bg-orange-200">
+          <HiOutlineExternalLink size={15} />
+        </Link>
+      </div>
       <Divider />
       <div className="text-sm grid">
         <Link to="" className="hover:bg-orange-300 rounded py-1">
